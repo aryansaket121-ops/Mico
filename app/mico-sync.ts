@@ -37,11 +37,3 @@ export async function purchaseShopItem(sku:string){
  if(error)throw error;
  return data as {xp:number;hearts:number;item_quantity:number};
 }
-
-export async function startUnlimitedHeartsCheckout(){
- if(!supabase)throw new Error('Mico is not connected.');
- const {data,error}=await supabase.functions.invoke('create-heart-pass-checkout',{body:{}});
- if(error)throw error;
- if(!data?.url)throw new Error('Checkout is not available yet.');
- return data.url as string;
-}
