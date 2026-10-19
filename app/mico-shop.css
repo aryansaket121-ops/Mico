@@ -13,3 +13,5 @@
 /* The shell has legacy generic button rules; preserve the Shop's tactile controls. */
 .mico-shop-banner button{display:inline-flex!important;width:auto!important;min-height:47px!important;padding:0 17px!important;border:0!important;border-radius:14px!important;background:#fff!important;color:#253d86!important;box-shadow:0 5px #bdc8ff!important}
 .mico-shop-items button{display:flex!important;width:auto!important;min-width:132px!important;min-height:43px!important;padding:0 12px!important;border:2px solid #dce6e9!important;border-bottom-width:4px!important;border-radius:13px!important;background:#fff!important;color:#159edb!important;box-shadow:none!important}
+
+.mico-shop-pass{grid-template-columns:minmax(0,1fr)}
