@@ -52,7 +52,7 @@ export default function MarketingLanding() {
         <h1><span>The visual, playful way to</span><strong>learn anatomy.</strong></h1>
         <p>Build a working map of the human body with quick lessons, real 3D models, and practice that sticks.</p>
         <div className="landing-actions">
-          <Action href="/login">Get started</Action>
+          <Action href="/dashboard">Explore the free demo</Action>
           <Action href="/login" tone="outline">I already have an account</Action>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function MarketingLanding() {
     <section className="landing-systems" aria-label="Explore anatomy systems">
       <button aria-label="Previous systems" onClick={() => moveLanguages(-1)}><ChevronLeft /></button>
       <div className="landing-system-scroll">
-        {systems.map(([name, image]) => <Link href="/login" key={name}><img src={image} alt="" /><span>{name}</span></Link>)}
+        {systems.map(([name, image]) => <Link href="/atlas" key={name}><img src={image} alt="" /><span>{name}</span></Link>)}
       </div>
       <button aria-label="Next systems" onClick={() => moveLanguages(1)}><ChevronRight /></button>
     </section>
@@ -71,7 +71,7 @@ export default function MarketingLanding() {
         <p className="landing-eyebrow landing-green"><Sparkles size={17} /> DESIGNED FOR CURIOSITY</p>
         <h2>free. fun. effective.</h2>
         <p>Learning anatomy with Mico is visual and active. Rotate a structure, test your recall, and learn why each part matters in the system around it.</p>
-        <Link href="/login" className="landing-text-link">Explore how Mico works <ChevronRight size={19} /></Link>
+        <Link href="/dashboard" className="landing-text-link">Explore how Mico works <ChevronRight size={19} /></Link>
       </div>
       <div className="landing-illustration-shell feature-video landing-learning-art"><img src="/mico/landing/learning-path.png" alt="A learner progressing through practice cards" /></div>
     </section>
@@ -83,19 +83,19 @@ export default function MarketingLanding() {
         <h2>learn anytime,<br />anywhere</h2>
         <p>Take a two-minute challenge between classes, explore the atlas on a larger screen, and return whenever you want another angle.</p>
         <div className="landing-store-links">
-          <Link href="/login"><Play size={23} fill="currentColor" /><span><small>START ON THE</small>Web app</span></Link>
+          <Link href="/dashboard"><Play size={23} fill="currentColor" /><span><small>START ON THE</small>Web app</span></Link>
           <Link href="/atlas"><Stethoscope size={23} /><span><small>EXPLORE THE</small>3D atlas</span></Link>
         </div>
       </div>
     </section>
 
     <section className="landing-feature landing-plus">
-      <div className="landing-illustration-shell feature-video landing-plus-art"><img src="/mico/landing/mico-plus.png" alt="Mico relaxing with unlimited learning" /></div>
+      <div className="landing-illustration-shell feature-video landing-plus-art"><img src="/mico/landing/mico-plus.png" alt="Mico celebrating a free anatomy study session" /></div>
       <div className="landing-feature-copy">
-        <p className="landing-eyebrow landing-mint"><Sparkles size={17} /> MICO PLUS</p>
-        <h2>Make your study time go further.</h2>
-        <p>Unlock unlimited review and focused practice sessions, with a clear picture of what to study next.</p>
-        <Action href="/login" tone="white">Try Mico Plus</Action>
+        <p className="landing-eyebrow landing-mint"><Sparkles size={17} /> FREE PUBLIC DEMO</p>
+        <h2>Explore anatomy for free.</h2>
+        <p>Open the 3D atlas and guided learning demo. No account or payment is required.</p>
+        <Action href="/dashboard" tone="white">Start exploring</Action>
       </div>
     </section>
 
@@ -104,7 +104,7 @@ export default function MarketingLanding() {
         <p className="landing-eyebrow landing-green"><Stethoscope size={17} /> PRACTICE WITH PURPOSE</p>
         <h2>See what you know.</h2>
         <p>Practice with different systems, not recycled diagrams. Identify real structures, build spatial understanding, and revisit the concepts that need another look.</p>
-        <Link href="/login" className="landing-text-link">Try a quick challenge <ChevronRight size={19} /></Link>
+        <Link href="/dashboard" className="landing-text-link">Try a quick challenge <ChevronRight size={19} /></Link>
       </div>
       <div className="landing-illustration-shell feature-video landing-milestone-art"><img src="/mico/landing/milestone.png" alt="A learner reaching a new learning milestone" /></div>
     </section>
@@ -113,14 +113,14 @@ export default function MarketingLanding() {
       <div className="landing-cta-copy">
         <p className="landing-eyebrow landing-green">YOUR BODY, YOUR MAP</p>
         <h2>Learn anatomy with Mico.</h2>
-        <Action href="/login">Get started</Action>
+        <Action href="/dashboard">Explore the free demo</Action>
       </div>
       <div className="landing-illustration-shell landing-cta-video landing-rewards-art"><img src="/mico/landing/rewards.png" alt="Mico celebrating learning rewards" /></div>
     </section>
 
     <footer className="landing-footer">
       <div className="landing-footer-grid">
-        <div className="landing-footer-intro"><MicoMark /><p>Interactive anatomy learning for everyone who wants to understand the body, not just memorize it.</p><Link href="/login">Try the public demo <ChevronRight size={16} /></Link></div>
+        <div className="landing-footer-intro"><MicoMark /><p>Interactive anatomy learning for everyone who wants to understand the body, not just memorize it.</p><Link href="/dashboard">Try the public demo <ChevronRight size={16} /></Link></div>
         {footerGroups.map(([title, ...items]) => <div key={title}><h3>{title}</h3>{items.map(item => <a href="#top" key={item}>{item}</a>)}</div>)}
       </div>
       <div className="landing-footer-bottom"><span>© 2026 Mico</span><span>Made for anatomy curiosity</span><Link href="/login">Log in</Link></div>
