@@ -8,6 +8,12 @@ const corsHeaders = {
 Deno.serve(async (request) => {
   if (request.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders });
   if (request.method !== 'POST') return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405, headers: corsHeaders });
+  if (Deno.env.get('MICO_PAYMENTS_ENABLED') !== 'true') {
+    return new Response(JSON.stringify({ error: 'Paid Mico features are not available yet.' }), {
+      status: 503,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
+  }
 
   try {
     const supabaseUrl = Deno.env.get('SUPABASE_URL');
