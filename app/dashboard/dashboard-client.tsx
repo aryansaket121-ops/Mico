@@ -1,9 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import MicoApp from "../mico-app";
-
-/** Public, deliberately limited preview of the learning experience. */
+import MicoApp from "../mico-app";/** Public learning demo; progress is stored locally and no account is required. */
 export default function DashboardClient() {
   const router = useRouter();
 
