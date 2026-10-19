@@ -65,7 +65,11 @@ export default function MicoCoach({
       setMessages((current) => [...current, { role: "coach", content: data.answer as string }]);
       setActions(Array.isArray(data.actions) ? data.actions.slice(0, 2) : []);
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "Mico Coach could not answer.");
+      const message = cause instanceof Error ? cause.message : "";
+      const unavailable = !message || message.includes("API key configured") || message.includes("could not answer") || message.includes("unavailable");
+      setError(unavailable
+        ? "Mico Coach isn't available in this demo right now. You can still explore the atlas and lessons."
+        : message);
     } finally {
       setLoading(false);
     }

@@ -1,28 +1,64 @@
-# Human Atlas
+# Mico · Interactive Anatomy
 
-An interactive 3D anatomy explorer built with React, Three.js, and shadcn/ui. Take the BodyParts3D adult male reference apart into **2,234 individually selectable meshes**, explore **15 anatomical systems**, and search **3,432 named concepts**.
+An interactive 3D anatomy explorer and learning app built with Next.js, React, Three.js, and shadcn/ui. Take the BodyParts3D adult male reference apart into **2,234 individually selectable meshes**, explore **15 anatomical systems**, search **3,432 named concepts**, and work through guided anatomy lessons with a free public demo.
 
-**[Explore the live demo](https://human-atlas-seven.vercel.app)**
+> **Repository status:** This project was imported from an external GitHub source (a fork). Original application code is released under the [MIT License](LICENSE). Ownership and rights of the imported source have not been independently confirmed. No claim is made here that this project was built primarily with any specific tool.
 
 ## Explore
 
-- Orbit, zoom, and select structures directly on the body.
-- Toggle individual systems or use skeleton and organ presets.
-- Move from assembled anatomy to a spaced inventory of every visible piece.
-- Search anatomical names and source identifiers.
-- Isolate a selected structure and read its details.
-- Use compact controls and detail panels on mobile.
+- Landing page with an overview of the learning experience.
+- 3D Atlas: orbit, zoom, and select structures directly on the body; toggle systems; search named anatomy; isolate structures.
+- Free public demo (`/dashboard?demo=1`): guided lessons, practice, flashcards, imaging views, and local progress — no account or secrets required.
+- Mico Coach: an optional AI anatomy tutor panel. In the public demo it is not active and shows a friendly "unavailable" state.
 
 ## Run locally
 
-Requires Node.js 22.13 or newer. No API keys or accounts are needed.
+Requires Node.js 22.13 or newer. No API keys or accounts are needed for the public demo.
 
 ```sh
-npm ci
+npm install
 npm run dev
 ```
 
-Open http://localhost:3016. To build the static site, run `npm run build`; the output is in `dist/`.
+Open http://localhost:3016. To build for production:
+
+```sh
+npm run build
+```
+
+## Publish
+
+This is a Next.js app intended to run in a Node.js WebContainer and be published through Bolt. The public demo works without any environment configuration.
+
+## Anatomy data
+
+The viewer uses **BodyParts3D 4.0**, an adult male reference anatomy, licensed **CC BY 4.0** © The Database Center for Life Science. It does not represent every human structure or variation. Full credits, source links, and adaptation details are in [ATTRIBUTION.md](public/ATTRIBUTION.md).
+
+- License: https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html
+- Dataset: https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html
+- License terms: https://creativecommons.org/licenses/by/4.0/
+- Publication: Mitsuhashi et al. (2009), https://doi.org/10.1093/nar/gkn613
+
+This is an educational explorer, not a diagnostic or surgical tool.
+
+## Verified external technologies and content
+
+Only items present in the codebase or project files are listed here.
+
+- **Next.js** (App Router) — web framework.
+- **React** — UI library.
+- **Three.js** — 3D rendering.
+- **shadcn/ui** + **Tailwind CSS** — UI components and styling.
+- **BodyParts3D 4.0** — 3D anatomy data, CC BY 4.0 (see above and `public/ATTRIBUTION.md`).
+
+### Referenced but not active in the public demo
+
+These services are referenced in the source but are not configured or active on the public link. Their account ownership/status is unconfirmed.
+
+- **Supabase** — optional backend for signed-in progress sync and the shop economy. When no credentials are configured, the app falls back to local-only progress. The public demo does not use it.
+- **Mico Coach / AI tutor** — the `/api/mico-coach` route expects an AI provider API key that is not configured for the public demo. The coach panel shows a graceful "unavailable" state.
+- **Stripe** — payment edge functions exist under `supabase/functions/` for an optional "Heart Pass" purchase flow. Payments are disabled in the public demo and no Stripe key is configured.
+- **Mux** — an HLS video stream is referenced in the marketing landing. Its availability depends on an external account that is unconfirmed.
 
 ## Validate
 
@@ -33,32 +69,6 @@ node scripts/validate-interactions.mjs
 npm run build
 ```
 
-Validation covers mesh buffers, names and concept membership, nonoverlapping exploded layouts at desktop and mobile aspect ratios, search and inspection contracts, and tap-versus-drag handling. Browser interaction checks have exercised selection, system controls, search, isolation, rotation, and 390×844, 320×568, and 844×390 layouts. Phone controls stay clear of the exploded inventory, and isolated structures fit the space above or beside the detail panel. Physical-device performance and real multitouch hardware have not been tested.
-
-## Anatomy data
-
-The current viewer uses **BodyParts3D 4.0**, an adult male reference anatomy, licensed **CC BY 4.0**. It does not represent every human structure or variation. Individual source meshes are distinct from named concepts, which may group multiple meshes. Descriptions distinguish general system context from individual organ explanations.
-
-Geometry is simplified for browser performance while retaining every source mesh. The packaged model contains 2,288,268 triangles and downloads approximately 33 MB of compressed geometry. Full credits, source links, and adaptation details are in [ATTRIBUTION.md](public/ATTRIBUTION.md).
-
-This is an educational explorer, not a diagnostic or surgical tool.
-
-## How it works
-
-Geometry is merged into batches. Per-structure GPU textures control translation, visibility, and selection, while component geometry supports accurate picking. Exploded layouts pack only the visible pieces. Rendering updates when the scene changes; orbit controls remain responsive without thousands of separate draw calls.
-
-The optional WebMCP tools expose anatomy search and inspection in compatible browsers. The visible interface works without them.
-
-## Rebuilding geometry
-
-The repository includes browser-ready geometry. Rebuilding it is optional: obtain the official BodyParts3D OBJ archive and English metadata tables, prepare the joined concepts and display-system mappings, run `scripts/convert-anatomy.py`, then `node scripts/optimize-anatomy.mjs` and `node scripts/compress-models.mjs`. Simplification uses a 0.2% relative error limit per structure.
-
-## Deploy
-
-Import this repository into Vercel as a Vite project. The included `vercel.json` configures `npm ci`, `npm run build`, and the `dist` output directory. It can also be served by a static host.
-
 ## License
 
 Original application code is released under the [MIT License](LICENSE). **The anatomy data has its own CC BY 4.0 license**; preserve the attribution when redistributing it. Third-party dependencies retain their respective licenses.
-
-Issues and pull requests are welcome. Please include reproduction steps and browser/device details for interaction problems.
