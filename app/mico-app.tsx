@@ -43,7 +43,6 @@ import {
   loadCloudProgress,
   purchaseShopItem,
   recordLearningResult,
-  startUnlimitedHeartsCheckout,
 } from "./mico-sync";
 import "./mico.css";
 import "./mico-duolingo.css";
@@ -1047,7 +1046,7 @@ function Shop({
     }
     setBuying("unlimited-hearts-day");
     try {
-      window.location.assign(await startUnlimitedHeartsCheckout());
+      setNotice("Payments are disabled for the public demo.");
     } catch (error) {
       setNotice(
         error instanceof Error
