@@ -224,7 +224,7 @@ export default function MicoApp({
               <b>{learner.name}</b>
               <small>
                 {learner.demo
-                  ? "Limited public demo"
+                  ? "Free public demo · progress saved locally"
                   : "Synced to your account"}
               </small>
             </span>
@@ -673,10 +673,10 @@ function LearningRail({
     <aside className="mico-rail">
       <section className="mico-card mico-plus">
         <img src="/mico/mascots/mico-celebrate.png" alt="Mico celebrates" />
-        <span>MICO PLUS</span>
-        <h3>Learn anatomy with no limits.</h3>
-        <p>Keep your streak, train weak spots, and unlock focused review.</p>
-        <button onClick={() => start(next)}>Try 7 days free</button>
+        <span>FREE PUBLIC DEMO</span>
+        <h3>Explore anatomy without a paywall.</h3>
+        <p>Lessons, practice, and the 3D atlas are open to explore.</p>
+        <button onClick={() => onExplore()}>Open the 3D atlas</button>
       </section>
       <Daily progress={progress} start={start} />
       <section className="mico-card mico-weak">
@@ -860,7 +860,7 @@ function Profile({
               <h2>{learner.name}</h2>
               <p>
                 {learner.demo
-                  ? "Limited public demo · progress is temporary"
+                  ? "Free public demo · progress stays in this browser"
                   : `${learner.email ?? "Mico learner"} · Building a mental map of the body`}
               </p>
             </div>
@@ -1104,13 +1104,13 @@ function Shop({
     <div className="mico-shop-page">
       <section className="mico-shop-banner">
         <div>
-          <span>MICO PLUS</span>
+          <span>FREE STUDY TOOLS</span>
           <h2>Build a stronger study routine.</h2>
           <p>
-            Save your streak, refill hearts, and unlock deeper anatomy practice.
+            Earn gems through lessons and use them for optional study-kit items.
           </p>
-          <button onClick={() => setNotice("Mico Plus is coming soon.")}>
-            Explore Mico Plus <ChevronRight size={17} />
+          <button onClick={() => setNotice("All lessons and the 3D atlas are free to explore. No payment is needed.")}>
+            About the free demo <ChevronRight size={17} />
           </button>
         </div>
         <img
@@ -1131,17 +1131,17 @@ function Shop({
         </p>
       )}
       <section className="mico-shop-pass">
-        <img src="/mico/status/heart-life.png" alt="" />
+        
         <div>
-          <span>ONE-DAY PASS</span>
-          <h2>Unlimited hearts for 24 hours</h2>
-          <p>Keep practising with no heart loss for one full day.</p>
+          <span>PUBLIC DEMO</span>
+          <h2>No payment needed</h2>
+          <p>Practice with unlimited hearts and explore the anatomy atlas for free.</p>
         </div>
-        <button disabled={buying !== null} onClick={buyUnlimited}>
-          {buying === "unlimited-hearts-day"
-            ? "Opening checkout…"
-            : "Get for $1.00"}
-        </button>
+        
+          {null
+            
+            }
+        
       </section>
       <ShopSection
         title="Hearts & streaks"
@@ -1318,7 +1318,7 @@ function Practice({
         <p className="mico-practice-overline">TODAY’S REVIEW</p>
         <section className="mico-rewind-banner">
           <div className="mico-rewind-copy">
-            <span>MICO PLUS</span>
+            <span>FREE REVIEW</span>
             <h2>Unit Rewind</h2>
             <p>
               Bring the foundations back into focus with a quick, high-yield
