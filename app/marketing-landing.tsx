@@ -11,11 +11,10 @@ const systems = [
   ['Kidneys', '/study/anatomy/kidneys/organ.webp'], ['Liver', '/study/anatomy/liver/organ.webp'],
 ];
 
-const footerGroups = [
-  ['Mico', 'About us', 'Our approach', 'For educators', 'Research', 'Careers'],
-  ['Explore', 'Learning paths', '3D atlas', 'Practice lab', 'Study sets', 'Daily challenge'],
-  ['Support', 'Help center', 'Contact us', 'Community', 'Accessibility'],
-  ['Legal', 'Privacy', 'Terms', 'Data policy', 'Cookie policy'],
+const footerExploreLinks: {label: string; href: string}[] = [
+  {label: 'Learning paths', href: '/dashboard?demo=1'},
+  {label: '3D atlas', href: '/atlas'},
+  {label: 'Quick practice', href: '/dashboard?demo=1'},
 ];
 
 function MicoMark() {
@@ -36,7 +35,7 @@ export default function MarketingLanding() {
       <Link href="#top" className="landing-brand" aria-label="Mico home"><MicoMark /></Link>
       <div className="landing-nav-right">
         <button className="landing-language" type="button">SITE LANGUAGE: ENGLISH <ChevronDown size={15} /></button>
-        <Action href="/login" tone="outline">Log in</Action>
+        <Action href="/dashboard?demo=1" tone="outline">Try the free demo</Action>
       </div>
     </nav>
 
@@ -48,7 +47,7 @@ export default function MarketingLanding() {
         <p>Build a working map of the human body with quick lessons, real 3D models, and practice that sticks.</p>
         <div className="landing-actions">
           <Action href="/dashboard">Explore the free demo</Action>
-          <Action href="/login" tone="outline">I already have an account</Action>
+          <Action href="/atlas" tone="outline">Explore the 3D atlas</Action>
         </div>
       </div>
     </header>
@@ -116,9 +115,9 @@ export default function MarketingLanding() {
     <footer className="landing-footer">
       <div className="landing-footer-grid">
         <div className="landing-footer-intro"><MicoMark /><p>Interactive anatomy learning for everyone who wants to understand the body, not just memorize it.</p><Link href="/dashboard">Try the public demo <ChevronRight size={16} /></Link></div>
-        {footerGroups.map(([title, ...items]) => <div key={title}><h3>{title}</h3>{items.map(item => <a href="#top" key={item}>{item}</a>)}</div>)}
+        <div key="Explore"><h3>Explore</h3>{footerExploreLinks.map(({label, href}) => <Link href={href} key={label}>{label}</Link>)}</div>
       </div>
-      <div className="landing-footer-bottom"><span>© 2026 Mico</span><span>Made for anatomy curiosity</span><Link href="/login">Log in</Link></div>
+      <div className="landing-footer-bottom"><span>© 2026 Mico</span><span>Made for anatomy curiosity</span><Link href="/dashboard?demo=1">Explore the free demo</Link></div>
     </footer>
   </main>;
 }
