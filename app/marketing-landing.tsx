@@ -2,12 +2,7 @@
 
 import Link from 'next/link';
 import {ChevronDown, ChevronLeft, ChevronRight, Play, Sparkles, Stethoscope} from 'lucide-react';
-import HlsVideo from '../components/HlsVideo';
 import './marketing-landing.css';
-
-const streams = {
-  anywhere: 'https://stream.mux.com/6xLBelbJrZGw00K2jPsZtGm8pkftvfezQ8rdAmHL9HoM.m3u8',
-};
 
 const systems = [
   ['Heart', '/study/anatomy/heart/organ.webp'], ['Brain', '/study/anatomy/brain/organ.webp'],
@@ -77,7 +72,7 @@ export default function MarketingLanding() {
     </section>
 
     <section className="landing-anywhere">
-      <HlsVideo src={streams.anywhere} className="landing-anywhere-video" />
+      <div className="landing-anywhere-video" aria-hidden="true" />
       <div className="landing-anywhere-content">
         <p className="landing-eyebrow landing-blue"><Stethoscope size={17} /> YOUR STUDY, YOUR PACE</p>
         <h2>learn anytime,<br />anywhere</h2>
