@@ -15,6 +15,7 @@ const footerExploreLinks: {label: string; href: string}[] = [
   {label: 'Learning paths', href: '/dashboard?demo=1'},
   {label: '3D atlas', href: '/atlas'},
   {label: 'Quick practice', href: '/dashboard?demo=1'},
+  {label: 'Explore pricing', href: '/#pricing'},
 ];
 
 function MicoMark() {
@@ -34,6 +35,7 @@ export default function MarketingLanding() {
     <nav className="landing-nav" aria-label="Main navigation">
       <Link href="#top" className="landing-brand" aria-label="Mico home"><MicoMark /></Link>
       <div className="landing-nav-right">
+        <Link href="#pricing" className="landing-nav-link">Pricing</Link>
         <button className="landing-language" type="button">SITE LANGUAGE: ENGLISH <ChevronDown size={15} /></button>
         <Action href="/dashboard?demo=1" tone="outline">Try the free demo</Action>
       </div>
@@ -110,6 +112,49 @@ export default function MarketingLanding() {
         <Action href="/dashboard">Explore the free demo</Action>
       </div>
       <div className="landing-illustration-shell landing-cta-video landing-rewards-art"><img src="/mico/landing/rewards.png" alt="Mico celebrating learning rewards" /></div>
+    </section>
+
+    <section className="landing-pricing" id="pricing" aria-label="Pricing plans">
+      <div className="landing-pricing-head">
+        <p className="landing-eyebrow landing-green"><Sparkles size={17} /> SIMPLE, HONEST PRICING</p>
+        <h2>Pick how you learn.</h2>
+        <p>The free demo has everything you need to explore Mico today. Paid plans are on the way.</p>
+      </div>
+      <div className="landing-pricing-cards">
+        <article className="landing-price-card landing-price-free">
+          <h3>Free demo</h3>
+          <p className="landing-price-amount"><span className="landing-price-value">$0</span><span className="landing-price-cycle">free</span></p>
+          <ul>
+            <li>Interactive lessons</li>
+            <li>Practice questions</li>
+            <li>Full 3D anatomy atlas</li>
+          </ul>
+          <Action href="/dashboard?demo=1">Start free demo</Action>
+        </article>
+        <article className="landing-price-card landing-price-soon">
+          <h3>Monthly plan</h3>
+          <p className="landing-price-amount"><span className="landing-price-value">$20</span><span className="landing-price-cycle">/ month</span></p>
+          <span className="landing-price-badge">Checkout coming soon</span>
+          <ul aria-hidden="true">
+            <li>&mdash;</li>
+            <li>&mdash;</li>
+            <li>&mdash;</li>
+          </ul>
+          <button type="button" className="landing-action landing-action-disabled" disabled>Coming soon</button>
+        </article>
+        <article className="landing-price-card landing-price-soon">
+          <h3>One-time plan</h3>
+          <p className="landing-price-amount"><span className="landing-price-value">$99</span><span className="landing-price-cycle">one time</span></p>
+          <span className="landing-price-badge">Checkout coming soon</span>
+          <ul aria-hidden="true">
+            <li>&mdash;</li>
+            <li>&mdash;</li>
+            <li>&mdash;</li>
+          </ul>
+          <button type="button" className="landing-action landing-action-disabled" disabled>Coming soon</button>
+        </article>
+      </div>
+      <p className="landing-pricing-note">Paid checkout is not configured yet. You can explore Mico for free.</p>
     </section>
 
     <footer className="landing-footer">
